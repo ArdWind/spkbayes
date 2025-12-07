@@ -1,0 +1,63 @@
+# -----------------------------------
+# OS SYSTEM FILES
+# -----------------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------------
+# IDE / EDITOR
+# -----------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# -----------------------------------
+# PHP DEPENDENCIES (COMPOSER)
+# -----------------------------------
+/vendor/
+composer.lock
+
+# -----------------------------------
+# STORAGE & TEMPORARY FILES
+# -----------------------------------
+/storage/tmp/
+/storage/logs/
+*.log
+*.tmp
+
+# -----------------------------------
+# USER UPLOADS (tidak perlu masuk git)
+/public/img/
+/public/uploads/
+/public/img_tmp/
+
+# -----------------------------------
+# ADMINLTE (opsional)
+/public/adminlte/dist/
+/public/adminlte/plugins/
+
+# -----------------------------------
+# PYTHON
+# -----------------------------------
+/python/venv/
+/python/__pycache__/
+*.pyc
+*.pyo
+
+# -----------------------------------
+# ENV
+# -----------------------------------
+.env
+
+# -----------------------------------
+# NODE
+# -----------------------------------
+node_modules/
+
+# -----------------------------------
+# DATABASE BACKUP (jika ada)
+# -----------------------------------
+*.sql
+*.sqlite

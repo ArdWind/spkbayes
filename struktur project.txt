@@ -1,0 +1,41 @@
+spkbayes/
+│
+├── public/                 # Root web
+│   ├── index.php
+│   ├── css/
+│   ├── js/
+│   └── img/
+│
+├── app/                    # PHP logic
+│   ├── Controllers/
+│   ├── Models/
+│   ├── Services/
+│   └── Helpers/
+│
+├── views/
+│   ├── layouts/
+│   ├── components/
+│   └── pages/
+│
+├── python/                 # Python API diletakkan di sini
+│   ├── app.py
+│   └── venv/               (opsional)
+│
+├── storage/
+│   ├── logs/
+│   └── tmp/
+│
+├── config/
+│   ├── app.php
+│   ├── database.php
+│   └── routes.php
+│
+├── vendor/
+├── .gitignore
+├── README.md
+└── composer.json
+
+#Aktifkan python API
+venv\Scripts\Activate
+python app.py
+

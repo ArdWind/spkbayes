@@ -1,0 +1,11 @@
+{
+  "name": "spkbayes/project",
+  "description": "SPK Ekstrakurikuler menggunakan Naive Bayes (Native PHP + Python API)",
+  "type": "project",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
