@@ -1,3 +1,5 @@
+# ...\spkbayes\python\app.py
+
 import pandas as pd
 from flask import Flask, request, jsonify
 from sklearn.naive_bayes import CategoricalNB

@@ -1,0 +1,18 @@
+# python/requirements.txt
+# Dependencies untuk SPK Naive Bayes API (Flask)
+
+# Untuk machine learning: Implementasi Naive Bayes
+scikit-learn==1.3.0 
+
+# Untuk manipulasi dan analisis data (membaca data historis dari DB)
+pandas==2.0.3
+
+# Web Framework: Untuk membuat API service
+Flask==2.3.3
+
+# Untuk koneksi ke database MySQL dari Python
+SQLAlchemy==2.0.20
+PyMySQL==1.1.0 
+
+# Utility: Untuk menangani objek array secara efisien
+numpy==1.25.2
