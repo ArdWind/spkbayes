@@ -1,4 +1,5 @@
 <?php
+// ...\spkbayes\app\Helpers\Database.php
 
 namespace App\Helpers;
 

@@ -1,15 +1,26 @@
 <?php
+// ...\spkbayes\public\index.php (REVISI)
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// Mulai sesi (diperlukan untuk login/logout)
+session_start();
 
-$routes = include __DIR__ . '/../config/routes.php';
+$page = $_GET['page'] ?? 'home';
 
-$page = $_GET['page'] ?? 'form_input';
+// Jika halaman yang diminta adalah SPK Core (form_input, list_results) 
+// atau halaman Admin (dashboard, login, dll), redirect ke admin.php.
+if (in_array($page, ['form_input', 'list_results', 'dashboard', 'login', 'daftar'])) {
+  header("Location: admin.php?page={$page}");
+  exit;
+}
 
-if (isset($routes[$page])) {
-  [$class, $method] = $routes[$page];
-  $controller = new $class();
-  $controller->$method();
+// Jika halaman yang diminta adalah HOME
+if ($page === 'home') {
+  require 'home.php';
+}
+// Jika halaman yang diminta adalah LOGOUT
+elseif ($page === 'logout') {
+  require 'logout.php';
 } else {
-  echo "404 - Halaman tidak ditemukan.";
+  // 404 untuk halaman non-admin lainnya
+  require 'pages/404.php';
 }

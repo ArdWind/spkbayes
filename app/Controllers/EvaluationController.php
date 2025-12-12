@@ -1,4 +1,5 @@
 <?php
+// ...\spkbayes\app\Controllers\EvaluationController.php
 
 namespace App\Controllers;
 
@@ -18,7 +19,7 @@ class EvaluationController
   public function create()
   {
     $ekskulOptions = ['PASKIBRA', 'PRAMUKA', 'KARATE', 'FUTSAL', 'VOLLEY'];
-    include __DIR__ . "/../../views/pages/form_input.php";
+    include __DIR__ . "/../../public\pages\dashboardadmin/form_input.php";
   }
 
   // DISKRITISASI
@@ -75,7 +76,7 @@ class EvaluationController
       $resultsCount++;
     }
 
-    header("Location: index.php?page=list_results&success={$resultsCount}");
+    header("Location: admin.php?page=list_results&success={$resultsCount}");
     exit;
   }
 
@@ -83,6 +84,6 @@ class EvaluationController
   public function index()
   {
     $results = EvaluationResult::all();
-    include __DIR__ . "/../../views/pages/list_results.php";
+    include __DIR__ . "/../../public\pages\dashboardadmin\list_results.php";
   }
 }

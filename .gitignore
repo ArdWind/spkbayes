@@ -35,8 +35,8 @@ composer.lock
 
 # -----------------------------------
 # ADMINLTE (opsional)
-/public/adminlte/dist/
-/public/adminlte/plugins/
+/public/adminlte/dist
+/public/adminlte/plugins
 
 # -----------------------------------
 # PYTHON
@@ -59,5 +59,5 @@ node_modules/
 # -----------------------------------
 # DATABASE BACKUP (jika ada)
 # -----------------------------------
-*.sql
-*.sqlite
+#*.sql
+#*.sqlite

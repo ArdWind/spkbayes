@@ -1,41 +1,63 @@
 spkbayes/
-│
-├── public/                 # Root web
-│   ├── index.php
-│   ├── css/
-│   ├── js/
-│   └── img/
-│
-├── app/                    # PHP logic
-│   ├── Controllers/
+├── app/
+│   ├── Controllers/ 
+│   │   ├── EvaluationController.php  
+│   ├── Helpers/
+│   │   └── Database.php              
 │   ├── Models/
-│   ├── Services/
-│   └── Helpers/
-│
-├── views/
-│   ├── layouts/
-│   ├── components/
-│   └── pages/
-│
-├── python/                 # Python API diletakkan di sini
-│   ├── app.py
-│   └── venv/               (opsional)
-│
-├── storage/
-│   ├── logs/
-│   └── tmp/
-│
+│   │   └── EvaluationResult.php      
+│   └── Services/
+│       └── PythonApiService.php      
 ├── config/
-│   ├── app.php
-│   ├── database.php
-│   └── routes.php
-│
-├── vendor/
+│   ├── app.php                       
+│   ├── database.php                  
+│   ├── db_config.php                 
+│   └── routes.php                    
+├── database/
+│   └── db_spk_ekskul.sql             
+├── python/                           
+│   ├── app.py                        
+│   ├── requirements.txt              
+│   └── venv/                         <-- virtual environment
+├── public/                           <-- Root Web Server
+│   ├── admin.php                     <-- D:\...\spkbayes\public\admin.php (Router Admin)
+│   ├── index.php                     <-- D:\...\spkbayes\public\index.php (Router Frontend)
+│   ├── home.php                     
+│   ├── logout.php                    
+│   ├── adminlte/                     <-- Assets AdminLTE
+│   │   └── ...
+│   ├── layouts/
+│   │   ├── header.php                
+│   │   ├── footer.php                
+│   │   └── sidebar.php               
+│   ├── pages/
+│   │   ├── login.php
+│   │   ├── register.php
+│   │   ├── 404.php
+│   │   ├── dashboardsiswa/
+│   │   ├── dashboardguru/
+│   │   └── dashboardadmin/
+│   │       ├── dashboard_admin.php
+│   │       ├── data_latih.php        
+│   │       ├── data_probabilitas.php 
+│   │       ├── form_input.php        <-- (View MVC create/store)
+│   │       └── list_results.php      <-- (View MVC index)
+├── vendor/                           
+│   ├── composer/
+│   └── autoload.php
+├── composer.json
+├── composer.lock
 ├── .gitignore
-├── README.md
-└── composer.json
+└── README.md
 
+
+--------------------------
 #Aktifkan python API
+cd python
 venv\Scripts\Activate
 python app.py
-
+----------------------------
+cd spkbayes/python
+python -m venv venv
+pip install -r requirements.txt
+python app.py

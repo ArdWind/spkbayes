@@ -1,4 +1,5 @@
 <?php
+// ...\spkbayes\config\app.php
 
 return [
 
