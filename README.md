@@ -19,7 +19,59 @@ Sistem ini dibangun dengan arsitektur hibrida: **PHP Native/MVC** (untuk antarmu
 
 Proyek ini dipisahkan menjadi dua lingkungan utama: **PHP (Logika Kontrol)** dan **Python (Mesin Prediksi)**.
 
-spkbayes/ ├── app/ # Logika MVC (Controller, Model, Service) ├── config/ # Konfigurasi aplikasi & database ├── database/ # File skema database (.sql) ├── python/ # Lingkungan Python API (Model Naive Bayes) │ ├── app.py # Flask Endpoint untuk Prediksi │ └── requirements.txt # Daftar dependensi Python └── public/ # Root Web Server (admin.php, index.php, assets, views) ├── admin.php # Router utama AdminLTE ├── layouts/ # Header, Footer, Sidebar └── pages/ # Views (.php) untuk berbagai peran pengguna
+```bash
+spkbayes/
+├── app/
+│   ├── Controllers/
+│   │   ├── EvaluationController.php
+│   ├── Helpers/
+│   │   └── Database.php
+│   ├── Models/
+│   │   └── EvaluationResult.php
+│   └── Services/
+│       └── PythonApiService.php
+├── config/
+│   ├── app.php
+│   ├── database.php
+│   ├── db_config.php
+│   └── routes.php
+├── database/
+│   └── db_spk_ekskul.sql
+├── python/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── venv/                         <-- virtual environment
+├── public/                           <-- Root Web Server
+│   ├── admin.php                     <-- D:\...\spkbayes\public\admin.php (Router Admin)
+│   ├── index.php                     <-- D:\...\spkbayes\public\index.php (Router Frontend)
+│   ├── home.php
+│   ├── logout.php
+│   ├── adminlte/                     <-- Assets AdminLTE
+│   │   └── ...
+│   ├── layouts/
+│   │   ├── header.php
+│   │   ├── footer.php
+│   │   └── sidebar.php
+│   ├── pages/
+│   │   ├── login.php
+│   │   ├── register.php
+│   │   ├── 404.php
+│   │   ├── dashboardsiswa/
+│   │   ├── dashboardguru/
+│   │   └── dashboardadmin/
+│   │       ├── dashboard_admin.php
+│   │       ├── data_latih.php
+│   │       ├── data_probabilitas.php
+│   │       ├── form_input.php        <-- (View MVC create/store)
+│   │       └── list_results.php      <-- (View MVC index)
+├── vendor/
+│   ├── composer/
+│   └── autoload.php
+├── composer.json
+├── composer.lock
+├── .gitignore
+└── README.md
+```
 
 ---
 
@@ -29,53 +81,56 @@ Ikuti langkah-langkah di bawah ini untuk menyiapkan lingkungan proyek di mesin l
 
 ### 1. Kloning Repositori
 
-````bash
-git clone [https://www.youtube.com/watch?v=aT5XQwZ_De8](https://www.youtube.com/watch?v=aT5XQwZ_De8)
+```bash
+git clone https://github.com/ArdWind/spkbayes.git
 cd spkbayes
-2. Konfigurasi Database (MySQL)
-1. Buat database baru di MySQL/phpMyAdmin dengan nama: db_spk_ekskul.
+```
 
+### 2. Konfigurasi Database (MySQL)
+
+1. Buat database baru di MySQL/phpMyAdmin dengan nama: db_spk_ekskul
 2. Import skema dari file database/db_spk_ekskul.sql. (Pastikan tabel users, historical_data, dan evaluation_results terbuat).
-
 3. Sesuaikan kredensial koneksi database pada file config/database.php dan config/db_config.php.
 
-3. Instalasi PHP Dependencies (Composer)
-
+### 3. Instalasi PHP Dependencies (Composer)
 
 Proyek ini menggunakan Composer untuk mengelola namespace dan autoloading PHP.
 
 ```bash
-
 composer install
+```
 
+### 4. Instalasi Python Dependencies
 
-4. Instalasi Python Dependencies
 Anda harus menyiapkan virtual environment Python untuk isolasi dependensi:
 
 1. Masuk ke direktori python/:
 
 ```bash
-
 cd python
+```
+
 2. Buat dan aktifkan virtual environment:
 
 ```bash
-
 python -m venv venv
 # Windows:
 .\venv\Scripts\activate
 # Linux/macOS:
 source venv/bin/activate
+```
+
 3. Instal dependensi dari requirements.txt:
 
 ```bash
-
 pip install -r requirements.txt
+```
+
 4. Kembali ke direktori utama spkbayes/:
 
 ```bash
-
 cd ..
+```
 
 ---
 
@@ -83,20 +138,20 @@ cd ..
 Proyek ini memerlukan dua server terpisah untuk berjalan: Web Server (PHP) dan API Server (Python).
 
 1. Jalankan API Server (Python)
-Di terminal pertama (pastikan virtual environment Python Anda aktif), jalankan server Flask:
+   Di terminal pertama (pastikan virtual environment Python Anda aktif), jalankan server Flask:
 
 ```bash
-
 cd python
+venv\Scripts\Activate
 python app.py
+```
 
 > Server harus berjalan di http://localhost:5000. Pastikan di output terminal muncul pesan "Model Naive Bayes berhasil dilatih."
 
 2. Jalankan Web Server (PHP)
-Pastikan XAMPP/Web Server Anda berjalan. Akses proyek melalui browser Anda:
+   Pastikan XAMPP/Web Server Anda berjalan. Akses proyek melalui browser Anda:
 
 > Halaman Administrator: http://localhost/spkbayes/public/admin.php
-
 > Halaman Utama: http://localhost/spkbayes/public/index.php
 
 ---
@@ -115,4 +170,7 @@ Kami sangat terbuka terhadap kontribusi! Jika Anda memiliki ide untuk perbaikan 
 5. Buka Pull Request (PR) di GitHub.
 
 Selamat ngoding!
-````
+
+```
+
+```
